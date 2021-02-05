@@ -21,6 +21,14 @@ module.exports = {
     ecmaVersion: 12,
   },
   plugins: ['prettier'],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@', '.']],
+        extensions: ['.ts', '.tsx', 'json'],
+      },
+    },
+  },
   rules: {
     'prettier/prettier': 'error',
     'react/prop-types': 'off',
