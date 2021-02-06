@@ -25,7 +25,7 @@ module.exports = {
     'import/resolver': {
       alias: {
         map: [['@', '.']],
-        extensions: ['.ts', '.tsx', 'json'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', 'json'],
       },
     },
   },
@@ -35,4 +35,16 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
   },
+  overrides: [
+    {
+      files: ['**/__tests__/**/*', '**/*.{spec,test}.*'],
+      env: {
+        'jest/globals': true,
+      },
+      extends: [
+        'plugin:jest/recommended',
+        'plugin:testing-library/recommended',
+      ],
+    },
+  ],
 }
