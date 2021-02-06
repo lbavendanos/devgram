@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
       </Head>
 
       <Navbar />
-      <main></main>
+      <main className="flex-grow bg-gray-100"></main>
       <Footer className="mt-auto" />
     </div>
   )

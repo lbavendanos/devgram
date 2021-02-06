@@ -2,6 +2,14 @@ import { render, screen } from '@testing-library/react'
 import Navbar from './Navbar'
 
 describe('Navbar component', () => {
+  it('render logo', () => {
+    render(<Navbar />)
+
+    const logo = screen.getByText('Devgram')
+
+    expect(logo).toBeInTheDocument()
+  })
+
   it('render navigation', () => {
     render(<Navbar />)
 
