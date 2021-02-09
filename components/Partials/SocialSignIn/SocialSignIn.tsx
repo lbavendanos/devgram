@@ -1,13 +1,10 @@
+import { app, db, githubAuthProvider } from '@/utils/firebase/firebase'
 import { FaGithub } from 'react-icons/fa'
-import firebase from 'firebase/app'
-import { app, githubAuthProvider } from '@/utils/firebase/firebase'
+import { User } from '@/types'
 
 interface Props {
   githubSigIn?: boolean
-  onGithubSignInSuccess?: (
-    user: firebase.User,
-    credential: firebase.auth.AuthCredential
-  ) => void
+  onGithubSignInSuccess?: (user: User) => void
   onGithubSignInError?: (error: Error) => void
 }
 
@@ -18,13 +15,31 @@ export default function SocialSigIn({
 }: Props): JSX.Element {
   const handleGithubSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    try {
-      const { user, credential } = await app
-        .auth()
-        .signInWithPopup(githubAuthProvider)
 
-      if (user && credential && onGithubSignInSuccess) {
-        onGithubSignInSuccess(user, credential)
+    try {
+      const {
+        user: firebaseUser,
+        additionalUserInfo: githubInfo,
+      } = await app.auth().signInWithPopup(githubAuthProvider)
+
+      if (firebaseUser && githubInfo) {
+        const { isNewUser } = githubInfo
+        const { uid } = firebaseUser
+        const { username } = githubInfo
+        const { profile } = githubInfo
+        const user: User = { ...profile, username, uid } as User
+
+        if (isNewUser) {
+          try {
+            await db.collection('users').doc(uid).set(user)
+          } catch (error) {
+            console.error('Error adding document: ', error)
+          }
+        }
+
+        if (onGithubSignInSuccess) {
+          onGithubSignInSuccess(user)
+        }
       }
     } catch (error) {
       if (onGithubSignInError) {

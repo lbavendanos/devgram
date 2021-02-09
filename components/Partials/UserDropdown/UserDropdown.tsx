@@ -1,9 +1,11 @@
 import { AuthContext } from '@/contexts/AuthContext'
 import { app } from '@/utils/firebase/firebase'
+import { useRouter } from 'next/router'
 import { useContext, useEffect, useRef, useState } from 'react'
 
 export default function UserDropdown(): JSX.Element {
   const user = useContext(AuthContext)
+  const router = useRouter()
   const [dropdown, setDropdown] = useState<boolean>(false)
   const dropdownElement = useRef<HTMLDivElement | null>(null)
 
@@ -17,11 +19,17 @@ export default function UserDropdown(): JSX.Element {
     setDropdown(false)
   }
 
-  const handleSignOut = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleProfile = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+
+    router.push(`/${user.username}`)
+  }
+
+  const handleSignOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
 
     setDropdown(false)
-    await app.auth().signOut()
+    app.auth().signOut()
   }
 
   useEffect(() => {
@@ -40,7 +48,11 @@ export default function UserDropdown(): JSX.Element {
         data-testid="toggle"
       >
         <div className="w-6 h-6 overflow-hidden rounded-full border border-gray-300">
-          <img src={user.avatar} alt={user.name} className="w-full h-full" />
+          <img
+            src={user.avatar_url}
+            alt={user.name}
+            className="w-full h-full"
+          />
         </div>
       </a>
       <div
@@ -52,7 +64,7 @@ export default function UserDropdown(): JSX.Element {
         onBlur={handleMenuBlur}
         data-testid="menu"
       >
-        <a className="hover:bg-gray-100">
+        <a className="hover:bg-gray-100" role="button" onClick={handleProfile}>
           <div className="px-3 py-1.5">
             <span className="">Profile</span>
           </div>

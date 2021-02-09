@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { FaHome, FaHeart, FaWpexplorer } from 'react-icons/fa'
-import UserDropdown from '../UserDropdown/UserDropdown'
+import UserDropdown from '@/components/Partials/UserDropdown/UserDropdown'
 
 export default function Navbar(): JSX.Element {
   return (
