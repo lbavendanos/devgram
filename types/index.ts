@@ -1,4 +1,4 @@
-export interface User {
+export interface Profile {
   avatar_url: string
   bio: string | null
   blog: string
