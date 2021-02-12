@@ -73,7 +73,7 @@ export default function GithubButton({
       tabIndex={0}
       onClick={handleGithubSignIn}
     >
-      <FaGithub />
+      <FaGithub data-testid="icon" />
       <span className="ml-2">Login with GitHub</span>
     </a>
   )
