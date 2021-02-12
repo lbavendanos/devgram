@@ -53,10 +53,10 @@ export default function Navbar() {
             </ul>
           </nav>
         ) : (
-          <div className="flex-1">
+          <div className="flex-shrink-0">
             <div className="flex justify-end">
               <GithubButton
-                className="text-xs text-center px-3"
+                className="text-xs text-center"
                 onGithubSignInSuccess={handleGithubSignInSuccess}
                 onGithubSignInError={handleGithubSignInError}
               />
