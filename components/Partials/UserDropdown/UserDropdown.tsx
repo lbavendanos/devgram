@@ -1,48 +1,27 @@
-import { useEffect, useState } from 'react'
-import Dropdown from 'react-overlays/Dropdown'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { app, db } from '@/utils/firebase/firebase'
+import Dropdown from 'react-overlays/Dropdown'
+import { app } from '@/utils/firebase/firebase'
 import { useAuth } from '@/contexts/AuthContext'
-import { Profile } from '@/types'
+import { useProfile } from '@/hooks/profile'
 
-export default function UserDropdown(): JSX.Element {
+export default function UserDropdown() {
   const { user } = useAuth()
-  const [profile, setProfile] = useState<Profile | null>(null)
+  const { profile } = useProfile(user)
   const [show, setShow] = useState(false)
+  const router = useRouter()
 
   const handleToggle = (nextShow: boolean) => {
     setShow(nextShow)
   }
 
-  const handleSignOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleSignOut = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
 
-    app.auth().signOut()
+    await app.auth().signOut()
+    router.push('/')
   }
-
-  const fetchProfile = async (id: string) => {
-    let profile = null
-
-    try {
-      const documentSnapshot = await db.collection('profiles').doc(id).get()
-
-      profile = documentSnapshot.exists
-        ? (documentSnapshot.data() as Profile)
-        : null
-    } catch (error) {
-      console.log('Error getting document:', error)
-    }
-
-    return profile
-  }
-
-  useEffect(() => {
-    if (user) {
-      fetchProfile(user.uid).then((profile) => {
-        setProfile(profile)
-      })
-    }
-  }, [user])
 
   return profile ? (
     <Dropdown show={show} onToggle={handleToggle}>
