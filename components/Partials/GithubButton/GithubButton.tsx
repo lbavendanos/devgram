@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import { app, db, githubAuthProvider } from '@/utils/firebase/firebase'
+import { app, db, githubAuthProvider } from '@/utils/firebase/client'
 import { FaGithub } from 'react-icons/fa'
 
 interface Props {

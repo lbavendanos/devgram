@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import firebase from 'firebase'
-import { app } from '@/utils/firebase/firebase'
+import { app } from '@/utils/firebase/client'
 import { AuthContext } from '@/contexts/AuthContext'
 
 interface Props {

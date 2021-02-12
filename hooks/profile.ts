@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import firebase from 'firebase'
 import { Profile } from '@/types'
-import { db } from '@/utils/firebase/firebase'
+import { db } from '@/utils/firebase/client'
 
 export function useProfile(user: firebase.User | null) {
   const [profile, setProfile] = useState<Profile | null>(null)

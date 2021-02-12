@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Dropdown from 'react-overlays/Dropdown'
-import { app } from '@/utils/firebase/firebase'
+import { app } from '@/utils/firebase/client'
 import { useAuth } from '@/contexts/AuthContext'
 import { useProfile } from '@/hooks/profile'
 
