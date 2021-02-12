@@ -1,7 +1,6 @@
 import { useAuth } from '@/contexts/AuthContext'
-import AuthLayout from '@/components/Layouts/AuthLayout/AuthLayout'
+import CustomLayout from '@/components/Layouts/CustomLayout/CustomLayout'
 import BasicLayout from '@/components/Layouts/BasicLayout/BasicLayout'
-import React from 'react'
 import GithubButton from '@/components/Partials/GithubButton/GithubButton'
 
 export default function Home(): JSX.Element {
@@ -15,7 +14,7 @@ export default function Home(): JSX.Element {
   if (!loading) return <div className="font-mono">Loading...</div>
 
   return user ? (
-    <AuthLayout title={title}></AuthLayout>
+    <CustomLayout title={title}></CustomLayout>
   ) : (
     <BasicLayout title={title} className="flex justify-center items-center">
       <div className="container mx-auto">
