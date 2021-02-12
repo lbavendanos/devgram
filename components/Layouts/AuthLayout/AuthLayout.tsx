@@ -3,18 +3,20 @@ import Footer from '@/components/Partials/Footer/Footer'
 import Navbar from '@/components/Partials/Navbar/Navbar'
 
 interface Props {
+  title: string
   className?: string
   children?: JSX.Element
 }
 
 export default function AuthLayout({
+  title,
   className,
   children,
 }: Props): JSX.Element {
   return (
     <div className="flex flex-col min-h-screen">
       <Head>
-        <title>Devgram</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

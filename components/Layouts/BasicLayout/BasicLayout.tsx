@@ -2,18 +2,20 @@ import Head from 'next/head'
 import Footer from '@/components/Partials/Footer/Footer'
 
 interface Props {
+  title: string
   className?: string
   children?: JSX.Element
 }
 
 export default function BasicLayout({
+  title,
   className,
   children,
 }: Props): JSX.Element {
   return (
     <div className="flex flex-col min-h-screen">
       <Head>
-        <title>Devgram</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
