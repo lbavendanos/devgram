@@ -13,7 +13,7 @@ export default function GithubButton({
   onGithubSignInSuccess,
   onGithubSignInError,
 }: Props) {
-  const handleGithubSignIn = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleGithubSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     try {
@@ -53,28 +53,12 @@ export default function GithubButton({
   }
 
   return (
-    <a
-      className={`
-        font-mono
-        rounded
-        transition-colors
-        duration-300
-        ease-in-out
-        focus:outline-none
-        bg-gray-600
-        hover:bg-gray-800
-        text-white
-        flex
-        items-center
-        px-5
-        py-1
-        ${className}`}
-      role="button"
-      tabIndex={0}
+    <button
+      className={`btn btn-gray flex items-center px-5 py-1 ${className}`}
       onClick={handleGithubSignIn}
     >
       <FaGithub data-testid="icon" />
       <span className="ml-2">Login with GitHub</span>
-    </a>
+    </button>
   )
 }

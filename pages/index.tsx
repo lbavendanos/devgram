@@ -3,7 +3,7 @@ import CustomLayout from '@/components/Layouts/CustomLayout/CustomLayout'
 import BasicLayout from '@/components/Layouts/BasicLayout/BasicLayout'
 import GithubButton from '@/components/Partials/GithubButton/GithubButton'
 
-export default function Home(): JSX.Element {
+export default function HomePage() {
   const { user, loading } = useAuth()
   const title = 'Devgram'
 
