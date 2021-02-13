@@ -18,7 +18,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky z-40 top-0 border-b border-gray-300">
+    <header className="sticky z-40 top-0 border-b border-gray-300 bg-white">
       <div className="container mx-auto flex p-4">
         <div className="flex-1">
           <Link href="/">

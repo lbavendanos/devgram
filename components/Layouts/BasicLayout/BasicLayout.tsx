@@ -22,7 +22,7 @@ export default function BasicLayout({
       </Head>
 
       {navbar}
-      <main className={`flex-grow flex bg-gray-100 ${className}`}>
+      <main className={`flex-grow bg-gray-100 ${className || ''}`}>
         {children}
       </main>
       <Footer className="mt-auto" />
