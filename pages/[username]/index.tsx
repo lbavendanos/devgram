@@ -62,7 +62,41 @@ export default function ProfilePage({ profile }: Props) {
 
   return (
     <CustomLayout title={profile.name}>
-      <div>{profile.username}</div>
+      <div className="container mx-auto font-mono">
+        <div className="flex m-4">
+          <div className="flex-shrink-0">
+            <div className="w-24 h-24 sm:w-36 sm:h-36 overflow-hidden rounded-full border border-gray-300">
+              <img src={profile.avatar_url} alt={profile.name} />
+            </div>
+          </div>
+          <div className="flex-1 ml-4">
+            <div>
+              <h1 className="text-2xl">{profile.username}</h1>
+            </div>
+            <div>
+              <button className="btn btn-gray px-4 py-1">Follow</button>
+            </div>
+          </div>
+        </div>
+        <div className="mx-4 mt-2 mb-5">
+          <h3 className="font-bold text-sm">{profile.name}</h3>
+          <p className="text-xs">{profile.bio}</p>
+        </div>
+        <div className="grid grid-cols-3 border border-l-0 border-r-0 border-gray-400 py-2">
+          <div className="flex flex-col justify-center items-center">
+            <span className="font-bold text-md">0</span>
+            <span className="text-sm">publications</span>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <span className="font-bold text-md">0</span>
+            <span className="text-sm">followers</span>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <span className="font-bold text-md">0</span>
+            <span className="text-sm">followed</span>
+          </div>
+        </div>
+      </div>
     </CustomLayout>
   )
 }
