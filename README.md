@@ -7,7 +7,7 @@ This project was created to test some technologies and software development proc
  - Firebase: Authentication and storage in real time
  - TDD: Software development process focused on testing first
 
-**This project also serves as a boilerplate for future web apps that require these frameworks.**
+**This project can also be used as a boilerplate for future web apps that require these frameworks.**
 
 ## Getting Started
 
