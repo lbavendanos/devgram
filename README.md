@@ -1,12 +1,19 @@
-# Devgram
+## Devgram
 
-This project is built with Nextjs, Tailwind and TDD
+This project was created to test some technologies and software development process. This consists of replicating the Instagram web using the following:
+
+ - NextJS: Framework for creating SRR (server-side rendering) or SSG (static site generation) web apps
+ - Tailwind: CSS framework focused on utility classes
+ - Firebase: Authentication and storage in real time
+ - TDD: Software development process focused on testing first
+
+**This project also serves as a boilerplate for future web apps that require these frameworks.**
 
 ## Getting Started
 
-First, set firebase credentials
+First setup the firebase credentials in the `.env.local` and `firebase.config` files
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 ```bash
